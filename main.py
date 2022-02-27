@@ -1,6 +1,12 @@
-from traceback import print_tb
+from fastapi import FastAPI
+import requests
+import parser
 
+app = FastAPI()
 
-# https://vec.etu.ru/moodle/login/index.php
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
-print("hello, world!")
+session = requests.Session()
+parser.start_parse(session)
